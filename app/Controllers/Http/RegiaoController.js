@@ -1,6 +1,4 @@
 'use strict'
-const Regiao = use('App/Models/Regiao');
-const Localidade = use('App/Models/Localidade');
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -12,30 +10,37 @@ const Localidade = use('App/Models/Localidade');
 class RegiaoController {
   /**
    * Show a list of all regiaos.
-   * GET /regioes
+   * GET regiaos
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   * @param {View} ctx.view
    */
-  async index () {
-    const regiao = await Regiao.all();
-    return regiao;
+  async index ({ request, response, view }) {
+  }
+
+  /**
+   * Render a form to be used for creating a new regiao.
+   * GET regiaos/create
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   * @param {View} ctx.view
+   */
+  async create ({ request, response, view }) {
   }
 
   /**
    * Create/save a new regiao.
-   * POST /regioes
+   * POST regiaos
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
    */
-  async store ({ request }) {
-    
-    const data = request.only([ 'agente_cns', 'agente_apelido', 'agente_nome_completo' ]);
-    
-    const localidade = await Localidade.find();
-
-    const regiao = await localidade
-      .regioes()
-      .create(data);
-    
-    return regiao;
-
-
+  async store ({ request, response }) {
   }
 
   /**
