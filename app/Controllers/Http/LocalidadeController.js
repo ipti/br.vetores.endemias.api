@@ -56,7 +56,7 @@ class LocalidadeController {
 
   /**
    * Delete a localidade with id.
-   * DELETE localidades/:id
+   * DELETE /localidades/:id
    */ 
   async destroy ({ params }) {
     const localidade = await Localidade.findOrFail(params.id)
