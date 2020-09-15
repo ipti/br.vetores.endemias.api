@@ -47,6 +47,6 @@ Route.group(
         Route.resource('localidades', 'LocalidadeController').apiOnly()
 
         // *GET /municipios        *POST /municipios        *GET /municipios/:id         *PUT /municipios/:id         *DELETE /municipios/:id
-        Route.resource('municipios', 'MunicipiosController').apiOnly()
+        Route.resource('municipios', 'MunicipioController').apiOnly()
     }
 )
