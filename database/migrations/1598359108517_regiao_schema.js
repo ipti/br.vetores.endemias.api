@@ -18,7 +18,7 @@ class RegiaoSchema extends Schema {
                 .references('localidade_id')
                 .inTable('localidades')
                 .onUpdate('CASCADE')
-                .onDelete('DELETE')
+                .onDelete('CASCADE')
         })
     }
 
