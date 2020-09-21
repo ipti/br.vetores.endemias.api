@@ -46,7 +46,10 @@ Route.group(
         // *GET /localidades    *POST /localidades    *GET /localidades/:id     *PUT /localidades/:id     *DELETE /localidades/:id
         Route.resource('localidades', 'LocalidadeController').apiOnly()
 
-        // *GET /municipios        *POST /municipios        *GET /municipios/:id         *PUT /municipios/:id         *DELETE /municipios/:id
+        // *GET /municipios     *POST /municipios     *GET /municipios/:id      *PUT /municipios/:id      *DELETE /municipios/:id
         Route.resource('municipios', 'MunicipioController').apiOnly()
+
+        // *GET /depositos      *POST /depositos      *GET /depositos/:id       *PUT /depositos/:id       *DELETE /depositos/:id
+        Route.resource('depositos', 'DepositoController').apiOnly()
     }
 )
