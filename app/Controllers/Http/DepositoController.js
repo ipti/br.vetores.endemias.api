@@ -24,7 +24,7 @@ class DepositoController {
    * POST /depositos
    */
   async store ({ request }) {
-      const data = request.only(['depositos_siglas', 'depositos_descricao']);
+      const data = request.only(['depositos_sigla', 'depositos_descricao']);
       const deposito = await Deposito.create(data);
       return deposito;
   }
@@ -43,7 +43,7 @@ class DepositoController {
    * PUT or PATCH /depositos/:id
    */
   async update ({ params, request }) {
-      const data = request.only(['depositos_siglas', 'depositos_descricao']);
+      const data = request.only(['depositos_sigla', 'depositos_descricao']);
       const deposito = await Deposito.findOrFail(params.id);
 
       deposito.merge(data);
