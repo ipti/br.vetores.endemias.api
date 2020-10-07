@@ -12,6 +12,10 @@ class Regiao extends Model {
     static get primaryKey() {
         return 'regiao_id'
     }
+
+    visitas() {
+        return this.hasMany('App/Models/Visita')
+    }
 }
 
 module.exports = Regiao
