@@ -51,5 +51,8 @@ Route.group(
 
         // *GET /depositos      *POST /depositos      *GET /depositos/:id       *PUT /depositos/:id       *DELETE /depositos/:id
         Route.resource('depositos', 'DepositoController').apiOnly()
+
+        // *GET /visitas      *POST /visitas      *GET /visitas/:id       *PUT /visitas/:id       *DELETE /visitas/:id
+        Route.resource('visitas', 'VisitaController').apiOnly()
     }
 )
