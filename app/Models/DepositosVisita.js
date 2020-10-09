@@ -7,9 +7,6 @@ class DepositosVisita extends Model {
     static boot() {
         super.boot()
         this.addTrait('NoTimestamp')
-        this.addHook('beforeCreate', (DepositosVisita) => {
-            DepositosVisita.is_current_owner = true
-        })
     }
 
     static get primaryKey() {
