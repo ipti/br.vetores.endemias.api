@@ -1,7 +1,5 @@
 'use strict'
 
-const Regiao = require('../../Models/Regiao');
-
 const Visita = use('App/Models/Visita');
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
