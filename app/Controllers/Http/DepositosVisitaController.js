@@ -1,5 +1,7 @@
 'use strict'
 
+const DepositosVisita = use('App/Models/DepositosVisita');
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -10,83 +12,75 @@
 class DepositosVisitaController {
   /**
    * Show a list of all depositosvisitas.
-   * GET depositosvisitas
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
+   * GET /depositosvisitas
    */
-  async index ({ request, response, view }) {
-  }
-
-  /**
-   * Render a form to be used for creating a new depositosvisita.
-   * GET depositosvisitas/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
+  async index ({ request }) {
+    const depositosvisita = await DepositosVisita.all();
+    return depositosvisita;
   }
 
   /**
    * Create/save a new depositosvisita.
-   * POST depositosvisitas
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
+   * POST /depositosvisitas
    */
-  async store ({ request, response }) {
+  async store ({ request}) {
+    const data = request.only([
+      'depositosvisitas_larv1_tipo',
+      'depositosvisitas_larv1_qtd',
+      'depositosvisitas_larv1_qtd_dep_tratados',
+      'depositosvisitas_larv2_tipo',
+      'depositosvisitas_larv2_qtd',
+      'depositosvisitas_larv2_qtd_dep_tratados',
+      'depositosvisitas_adulticida_tipo',
+      'depositosvisitas_larv1_qtd_cargas',
+      'depositos_id',
+      'visita_id'
+    ]);
+    const depositosvisita = await DepositosVisita.create(data);
+    return depositosvisita;
   }
 
   /**
    * Display a single depositosvisita.
-   * GET depositosvisitas/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
+   * GET /depositosvisitas/:id
    */
-  async show ({ params, request, response, view }) {
-  }
-
-  /**
-   * Render a form to update an existing depositosvisita.
-   * GET depositosvisitas/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
+  async show ({ params }) {
+    const depositosvisitas = await DepositosVisita.findOrFail(params.id);
+    return depositosvisitas;
   }
 
   /**
    * Update depositosvisita details.
-   * PUT or PATCH depositosvisitas/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
+   * PUT or PATCH /depositosvisitas/:id
    */
-  async update ({ params, request, response }) {
+  async update ({ params, request }) {
+    const data = request.only([
+      'depositosvisitas_larv1_tipo',
+      'depositosvisitas_larv1_qtd',
+      'depositosvisitas_larv1_qtd_dep_tratados',
+      'depositosvisitas_larv2_tipo',
+      'depositosvisitas_larv2_qtd',
+      'depositosvisitas_larv2_qtd_dep_tratados',
+      'depositosvisitas_adulticida_tipo',
+      'depositosvisitas_larv1_qtd_cargas',
+      'depositos_id',
+      'visita_id'
+    ]);
+    const depositosvisita = await DepositosVisita.findOrFail(params.id);
+
+    depositosvisita.merge(data);
+    await depositosvisita.save();
+
+    return depositosvisita;
   }
 
   /**
    * Delete a depositosvisita with id.
-   * DELETE depositosvisitas/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
+   * DELETE /depositosvisitas/:id
    */
   async destroy ({ params, request, response }) {
+    const depositosvisita = await DepositosVisita.findOrFail(params.id);
+    await depositosvisita.delete();
   }
 }
 
