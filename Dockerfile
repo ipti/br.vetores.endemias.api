@@ -1,6 +1,6 @@
-FROM node:12.18.3
+FROM node:12-slim
 
-WORKDIR /usr/app
+WORKDIR /home/node/api
 
 COPY package*.json ./
 

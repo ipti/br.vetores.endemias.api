@@ -37,7 +37,7 @@
         "memoryReservation": 512,
         "volumesFrom": [],
         "stopTimeout": null,
-        "image": "node:lts-alpine3.12",
+        "image": "node:12-slim",
         "startTimeout": null,
         "firelensConfiguration": null,
         "dependsOn": null,

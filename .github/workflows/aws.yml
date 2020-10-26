@@ -56,11 +56,36 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: br-vetores-endemias-api
         IMAGE_TAG: ${{ github.sha }}
+        HOST: ${{ secrets.HOST }}
+        PORT: ${{ secrets.PORT }}
+        APP_NAME: ${{ secrets.APP_NAME }}
+        APP_KEY: ${{ secrets.APP_KEY }}
+        DB_CONNECTION: ${{ secrets.DB_CONNECTION }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_PORT: ${{ secrets.DB_PORT }}
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_DATABASE: ${{ secrets.DB_DATABASE}}
+        HASH_DRIVER: ${{ secrets.HASH_DRIVER }}
+
       run: |
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build 
+          -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          --build-arg HOST=$HOST
+          --build-arg PORT=$PORT
+          --build-arg APP_NAME=$APP_NAME
+          --build-arg APP_KEY=$APP_KEY
+          --build-arg DB_CONNECTION=$DB_CONNECTION
+          --build-arg DB_HOST=$DB_HOST
+          --build-arg DB_PORT=$DB_PORT
+          --build-arg DB_USER=DB_USER
+          --build-arg DB_PASSWORD=$DB_PASSWORD
+          --build-arg DB_DATABASE=$DB_DATABASE
+          --build-arg HASH_DRIVER=$HASH_DRIVER
+          .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
