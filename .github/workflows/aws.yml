@@ -84,8 +84,7 @@ jobs:
           --build-arg DB_USER=DB_USER
           --build-arg DB_PASSWORD=$DB_PASSWORD
           --build-arg DB_DATABASE=$DB_DATABASE
-          --build-arg HASH_DRIVER=$HASH_DRIVER
-          .
+          --build-arg HASH_DRIVER=$HASH_DRIVER .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
