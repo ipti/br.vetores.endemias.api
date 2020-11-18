@@ -6,12 +6,12 @@ services:
             container_name: vetores-endemias-api
             command: adonis serve
             ports:
-                - "3333:3333"
+                - "8081:8081"
             volumes:
                 - .:/usr/app
             environment: 
-                - 'HOST=127.0.0.1'
-                - 'PORT=3333'
+                - 'HOST=0.0.0.0'
+                - 'PORT=8081'
                 - 'NODE_ENV=development'
                 - 'APP_NAME=VetoresEndemias'
                 - 'APP_KEY=xy6jMjuqFT07ONSbewcyMiIrLTCHcmEk'
