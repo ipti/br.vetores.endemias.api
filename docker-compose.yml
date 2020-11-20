@@ -1,17 +1,17 @@
 version: "3"
 
 services:
+        migrate:
+            build: .
+            command: ["node", "ace", "migration:run"]
+
         api:
             build: .
             container_name: vetores-endemias-api
+            depends_on:
+                - migrate
             command: adonis serve
             ports:
                 - "8081:8081"
             volumes:
                 - .:/usr/app
-            environment: 
-                - 'HOST=0.0.0.0'
-                - 'PORT=8081'
-                - 'NODE_ENV=development'
-                - 'APP_NAME=VetoresEndemias'
-                - 'APP_KEY=xy6jMjuqFT07ONSbewcyMiIrLTCHcmEk'
