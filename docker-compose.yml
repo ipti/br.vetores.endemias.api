@@ -10,8 +10,7 @@ services:
             container_name: vetores-endemias-api
             depends_on:
                 - migrate
-            command: ["adonis", "serve"]
-            
+            command: adonis serve          
             ports:
                 - "8081:8081"
             volumes:
