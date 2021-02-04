@@ -13,8 +13,8 @@ class Localidade extends Model {
         return 'localidade_id'
     }
 
-    regioes() {
-        return this.hasMany('App/Models/Regiao')
+    visitas() {
+        return this.hasMany('App/Models/Visita')
     }
 }
 
